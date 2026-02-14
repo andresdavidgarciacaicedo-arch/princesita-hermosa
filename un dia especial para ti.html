@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Princesita hermosa 🌻</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+background:black;
+overflow:hidden;
+font-family:'Segoe UI', sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+/* BRILLO DORADO */
+body::before{
+content:"";
+position:absolute;
+width:900px;
+height:900px;
+background:radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
+animation: brilloFondo 8s ease-in-out infinite alternate;
+}
+@keyframes brilloFondo{
+from{transform:scale(1);}
+to{transform:scale(1.15);}
+}
+
+/* TITULO */
+.nombre{
+position:absolute;
+top:20px;
+font-size:45px;
+font-weight:bold;
+background:linear-gradient(90deg,gold,#fff6a9,gold);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation: brillo 3s linear infinite;
+}
+@keyframes brillo{
+0%{background-position:0%;}
+100%{background-position:200%;}
+}
+
+/* MENSAJE FINAL ARRIBA */
+.final{
+position:absolute;
+top:80px;
+font-size:26px;
+color:gold;
+opacity:0;
+transform:scale(0.8);
+transition:all 3s ease;
+}
+.final.mostrar{
+opacity:1;
+transform:scale(1);
+}
+
+/* BOTÓN */
+.boton{
+position:absolute;
+top:120px;
+padding:10px 20px;
+background:gold;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.container{
+display:flex;
+align-items:center;
+gap:60px;
+}
+
+/* RAMO */
+.ramo{
+position:relative;
+width:420px;
+height:420px;
+}
+
+/* GIRASOL */
+.girasol{
+position:absolute;
+width:160px;
+height:260px;
+animation: balanceo 5s ease-in-out infinite alternate;
+transform:scale(0);
+}
+@keyframes aparecer{to{transform:scale(1);}}
+@keyframes balanceo{
+from{transform:rotate(-2deg);}
+to{transform:rotate(2deg);}
+}
+
+/* POSICIONES */
+.g1{left:130px; top:0;}
+.g2{left:40px; top:60px;}
+.g3{left:220px; top:60px;}
+.g4{left:130px; top:120px;}
+
+.flor{
+position:relative;
+width:160px;
+height:160px;
+}
+
+.petalo{
+position:absolute;
+width:45px;
+height:90px;
+background:linear-gradient(to bottom,gold,orange);
+border-radius:50%;
+top:0;
+left:57px;
+transform-origin:bottom center;
+opacity:0;
+animation: florecer 1.2s forwards;
+}
+@keyframes florecer{to{opacity:1;}}
+
+.centro{
+position:absolute;
+width:80px;
+height:80px;
+background:radial-gradient(circle,#7a4a00,#4a2c00);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* TALLO */
+.tallo{
+position:absolute;
+width:10px;
+height:120px;
+background:linear-gradient(to bottom,#2e8b57,#14532d);
+left:50%;
+transform:translateX(-50%);
+top:130px;
+border-radius:10px;
+}
+
+/* HOJA */
+.hoja{
+position:absolute;
+width:40px;
+height:25px;
+background:linear-gradient(to right,#3cb371,#14532d);
+border-radius:50% 0 50% 0;
+top:170px;
+left:60%;
+transform-origin:left center;
+animation:viento 3s ease-in-out infinite alternate;
+}
+@keyframes viento{
+from{transform:rotate(20deg);}
+to{transform:rotate(40deg);}
+}
+
+/* FRASES */
+.frase{
+font-size:22px;
+max-width:300px;
+transition:opacity 1s;
+}
+
+/* CARTA CENTRADA */
+.carta{
+position:absolute;
+bottom:30px;
+width:85%;
+max-width:650px;
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(8px);
+font-size:16px;
+line-height:1.6;
+opacity:0;
+transition:opacity 3s;
+}
+.carta.mostrar{
+opacity:1;
+}
+
+/* CORAZONES */
+.corazon{
+position:absolute;
+font-size:20px;
+color:#ff4d6d;
+opacity:0;
+animation: explotar 2s forwards;
+}
+@keyframes explotar{
+0%{opacity:1;transform:scale(0.5);}
+100%{opacity:0;transform:scale(2) translateY(-100px);}
+}
+
+/* ESTRELLAS */
+.estrella{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation: caer linear infinite;
+}
+@keyframes caer{
+from{transform:translateY(-100vh);}
+to{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="nombre">Princesita hermosa ✨</div>
+<div class="final" id="finalMensaje">
+Solo quería que supieras lo feliz que me haces 💛
+</div>
+
+<button class="boton" onclick="document.getElementById('musica').play()">🎵 Reproducir música</button>
+
+<audio id="musica" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3f8f4b6c92.mp3?filename=romantic-piano-110624.mp3">
+</audio>
+
+<div class="container">
+<div class="ramo">
+<div class="girasol g1"></div>
+<div class="girasol g2"></div>
+<div class="girasol g3"></div>
+<div class="girasol g4"></div>
+</div>
+
+<div class="frase" id="frase">
+Mi princesa, gracias por estar en mi vida.
+</div>
+</div>
+
+<div class="carta" id="carta">
+Cuando te conocí iba a decir muchas cosas lindas, tenía mil palabras guardadas esperando salir sin medida.<br><br>
+Porque desde el primer momento algo en mí cambió sin avisar, me hiciste feliz sin darte cuenta, solo con tu forma de mirar.<br><br>
+Cuando te conocí… me enamoré, sin planes, sin buscarlo, sin pensarlo. Fue distinto a todo lo que viví, como si el destino quisiera abrazarlo.<br><br>
+Eres diferente, lo contrario a muchas chicas que he visto pasar; no compites con nadie, porque tu manera de ser no se puede comparar.<br><br>
+Y yo solamente soy alguien sencillo, alguien normal, que sin saberlo encontró a una persona maravillosa, especial.<br><br>
+No sé si el mundo entiende lo que siento al verte sonreír, pero sé que desde que llegaste mi corazón aprendió a latir más feliz. 💫
+</div>
+
+<script>
+
+/* SECUENCIA RAMO */
+const girasoles=document.querySelectorAll(".girasol");
+
+girasoles.forEach((g,index)=>{
+setTimeout(()=>{
+g.style.animation="aparecer 2s forwards, balanceo 5s ease-in-out infinite alternate";
+
+let flor=document.createElement("div");
+flor.classList.add("flor");
+
+for(let i=0;i<12;i++){
+let petalo=document.createElement("div");
+petalo.classList.add("petalo");
+petalo.style.transform=`rotate(${i*30}deg)`;
+petalo.style.animationDelay=(i*0.4)+"s";
+flor.appendChild(petalo);
+}
+
+let centro=document.createElement("div");
+centro.classList.add("centro");
+flor.appendChild(centro);
+
+g.appendChild(flor);
+
+let tallo=document.createElement("div");
+tallo.classList.add("tallo");
+g.appendChild(tallo);
+
+let hoja=document.createElement("div");
+hoja.classList.add("hoja");
+g.appendChild(hoja);
+
+},index*4000);
+});
+
+/* FRASES */
+const frases=[
+"Mi princesa, gracias por estar en mi vida.",
+"Mi reina hermosa, me haces feliz con solo verte.",
+"Me gusta escribirte y hablar contigo.",
+"Me encanta pasar tiempo contigo.",
+"Cada vez que te veo, algo en mí sonríe.",
+"Gracias por ser alguien tan especial para mí."
+];
+
+let index=0,contador=0;
+
+const intervalo=setInterval(()=>{
+let texto=document.getElementById("frase");
+texto.style.opacity=0;
+setTimeout(()=>{
+index=(index+1)%frases.length;
+texto.textContent=frases[index];
+texto.style.opacity=1;
+},1000);
+
+contador++;
+if(contador===frases.length){
+clearInterval(intervalo);
+setTimeout(()=>{
+document.getElementById("finalMensaje").classList.add("mostrar");
+document.getElementById("carta").classList.add("mostrar");
+explosionCorazones();
+},6000);
+}
+},5000);
+
+function explosionCorazones(){
+for(let i=0;i<30;i++){
+let corazon=document.createElement("div");
+corazon.classList.add("corazon");
+corazon.innerHTML="❤";
+corazon.style.left=Math.random()*100+"vw";
+corazon.style.top=Math.random()*100+"vh";
+document.body.appendChild(corazon);
+}
+}
+
+for(let i=0;i<70;i++){
+let estrella=document.createElement("div");
+estrella.classList.add("estrella");
+estrella.style.left=Math.random()*100+"vw";
+estrella.style.animationDuration=(4+Math.random()*5)+"s";
+document.body.appendChild(estrella);
+}
+</script>
+
+</body>
+</html>
